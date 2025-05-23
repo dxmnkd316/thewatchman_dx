@@ -1,7 +1,7 @@
 """Test proper handling of entity state changes."""
 
 from homeassistant.core import callback
-from custom_components.watchman.const import (
+from custom_components.watchman_dx.const import (
     DOMAIN,
     HASS_DATA_MISSING_ENTITIES,
     HASS_DATA_MISSING_SERVICES,

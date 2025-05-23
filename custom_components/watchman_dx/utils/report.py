@@ -47,7 +47,7 @@ async def parsing_stats(hass, start_time):
 
 
 async def report(hass, render, chunk_size):
-    """Generate Watchman report either as a table or as a list."""
+    """Generate Watchman_dx report either as a table or as a list."""
     if DOMAIN not in hass.data:
         raise HomeAssistantError("No data for report, refresh required.")
 

@@ -1,6 +1,6 @@
 """Test regexp rules."""
 
-from custom_components.watchman.const import (
+from custom_components.watchman_dx.const import (
     DOMAIN,
     CONF_INCLUDED_FOLDERS,
     HASS_DATA_MISSING_ENTITIES,
@@ -8,7 +8,7 @@ from custom_components.watchman.const import (
 
 from . import async_init_integration
 
-TEST_INCLUDED_FOLDERS = "/workspaces/thewatchman/tests/input_regex"
+TEST_INCLUDED_FOLDERS = "/workspaces/thewatchman_dx/tests/input_regex"
 
 
 async def test_regex(hass):

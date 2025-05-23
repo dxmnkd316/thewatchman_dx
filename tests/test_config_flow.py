@@ -10,7 +10,7 @@ from unittest.mock import patch
 
 from . import async_init_integration
 
-from custom_components.watchman.const import DOMAIN
+from custom_components.watchman_dx.const import DOMAIN
 
 
 # This fixture bypasses the actual setup of the integration
@@ -19,7 +19,7 @@ from custom_components.watchman.const import DOMAIN
 @pytest.fixture(autouse=True)
 def _bypass_setup_fixture(request: pytest.FixtureRequest) -> Generator[Any]:
     """Prevent setup."""
-    with patch("custom_components.watchman.async_setup_entry", return_value=True):
+    with patch("custom_components.watchman_dx.async_setup_entry", return_value=True):
         yield
 
 

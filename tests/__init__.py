@@ -5,7 +5,7 @@ from homeassistant.core import HomeAssistant
 from homeassistant.config_entries import ConfigEntry
 from pytest_homeassistant_custom_component.common import MockConfigEntry
 
-from custom_components.watchman.const import (
+from custom_components.watchman_dx.const import (
     DOMAIN,
     CONF_INCLUDED_FOLDERS,
     DEFAULT_OPTIONS,
@@ -24,7 +24,7 @@ async def async_init_integration(
 ) -> MockConfigEntry:
     """Set up integration in Home Assistant."""
     config = deepcopy(DEFAULT_OPTIONS)
-    config[CONF_INCLUDED_FOLDERS] = "/workspaces/thewatchman/tests/input"
+    config[CONF_INCLUDED_FOLDERS] = "/workspaces/thewatchman_dx/tests/input"
     if add_params:
         config = config | add_params
     if config_entry is None:

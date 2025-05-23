@@ -1,5 +1,5 @@
 report:
-  description: Run watchman report
+  description: Run watchman_dx report
   fields:
     parse_config:
       example: true
@@ -18,7 +18,7 @@ report:
           selector:
             text:
         data:
-          example: "title: Watchman Report"
+          example: "title: Watchman_dx Report"
           required: false
           advanced: true
         chunk_size:

@@ -65,7 +65,7 @@ def to_listi(options, key, section=None):
 
 
 def get_entry(hass: HomeAssistant) -> Any:
-    """Return Watchman's ConfigEntry instance."""
+    """Return Watchman_dx's ConfigEntry instance."""
     return hass.config_entries.async_get_entry(
         hass.data[DOMAIN_DATA]["config_entry_id"]
     )
