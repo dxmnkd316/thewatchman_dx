@@ -46,6 +46,7 @@ CONF_SERVICE_DATA = "data"
 CONF_SERVICE_DATA2 = "service_data"
 CONF_INCLUDED_FOLDERS = "included_folders"
 CONF_CHECK_LOVELACE = "check_lovelace"
+CONF_CHECK_CONFIG_ENTRIES = "check_config_entries"
 CONF_IGNORED_STATES = "ignored_states"
 CONF_CHUNK_SIZE = "chunk_size"
 CONF_CREATE_FILE = "create_file"
@@ -110,6 +111,7 @@ DEFAULT_OPTIONS = {
     CONF_IGNORED_STATES: [],
     CONF_IGNORED_FILES: "*/blueprints/*, */custom_components/*, */esphome/*",
     CONF_CHECK_LOVELACE: False,
+    CONF_CHECK_CONFIG_ENTRIES: False,
     CONF_STARTUP_DELAY: 0,
     CONF_SECTION_APPEARANCE_LOCATION: {
         CONF_HEADER: "-== Watchman_dx Report ==-",

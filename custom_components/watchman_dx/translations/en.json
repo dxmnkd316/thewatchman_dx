@@ -22,6 +22,7 @@
                     "ignored_states": "Exclude entities with the states below from the report:",
                     "ignored_files": "Ignored files (comma-separated):",
                     "check_lovelace": "Parse UI controlled dashboards",
+                    "Ccheck_config_entries": "Check core.config_entries",
                     "startup_delay": "Startup delay for watchman_dx sensors initialization"
                 },
                 "data_description": {

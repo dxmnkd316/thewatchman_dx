@@ -16,6 +16,7 @@ from homeassistant.helpers import entity_registry as er
 from .logger import _LOGGER, INDENT
 from ..const import (
     CONF_CHECK_LOVELACE,
+    CONF_CHECK_CONFIG_ENTRIES,
     CONF_IGNORED_FILES,
     CONF_INCLUDED_FOLDERS,
     CONF_REPORT_PATH,
@@ -84,6 +85,9 @@ def get_config(hass: HomeAssistant, key: str, default: Any | None = None) -> Any
         return to_lists(entry.data, key)
 
     if key in [CONF_IGNORED_STATES, CONF_CHECK_LOVELACE, CONF_STARTUP_DELAY]:
+        return get_val(entry.data, key)
+
+    if key in [CONF_IGNORED_STATES, CONF_CHECK_CONFIG_ENTRIES, CONF_STARTUP_DELAY]:
         return get_val(entry.data, key)
 
     if key in [CONF_HEADER, CONF_REPORT_PATH, CONF_COLUMNS_WIDTH, CONF_FRIENDLY_NAMES]:

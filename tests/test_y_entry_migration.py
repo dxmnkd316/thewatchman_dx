@@ -7,6 +7,7 @@ from . import from_list
 
 from custom_components.watchman_dx.const import (
     CONF_CHECK_LOVELACE,
+    CONF_CHECK_CONFIG_ENTRIES,
     CONF_CHUNK_SIZE,
     CONF_COLUMNS_WIDTH,
     CONF_FRIENDLY_NAMES,
@@ -40,6 +41,7 @@ old_config = {
     CONF_STARTUP_DELAY: 66,
     CONF_FRIENDLY_NAMES: True,
     CONF_CHECK_LOVELACE: True,
+    CONF_CHECK_CONFIG_ENTRIES: True,
     CONF_IGNORED_ITEMS: ["item1", "item2"],
     CONF_IGNORED_FILES: ["file1", "file2"],
 }
@@ -95,6 +97,9 @@ async def test_entry_migration_1to2(
     )
     assert (
         mock_config_entry.data[CONF_CHECK_LOVELACE] == old_config[CONF_CHECK_LOVELACE]
+    )
+    assert (
+        mock_config_entry.data[CONF_CHECK_CONFIG_ENTRIES] == old_config[CONF_CHECK_CONFIG_ENTRIES]
     )
     # === appearance_and_location section ===
     assert mock_config_entry.data[CONF_SECTION_APPEARANCE_LOCATION][CONF_FRIENDLY_NAMES]

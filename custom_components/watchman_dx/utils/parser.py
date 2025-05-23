@@ -13,6 +13,7 @@ from .utils import async_get_next_file, get_config
 from ..const import (
     BUNDLED_IGNORED_ITEMS,
     CONF_CHECK_LOVELACE,
+    CONF_CHECK_CONFIG_ENTRIES,
     CONF_IGNORED_FILES,
     CONF_IGNORED_ITEMS,
     CONF_INCLUDED_FOLDERS,
@@ -159,5 +160,8 @@ def get_included_folders(hass):
 
     if get_config(hass, CONF_CHECK_LOVELACE):
         folders.append((hass.config.config_dir, ".storage/**/lovelace*"))
+
+    if get_config(hass, CONF_CHECK_CONFIG_ENTRIES):
+        folders.append((hass.config.config_dir, ".storage/**/core.config_entries"))
 
     return folders
