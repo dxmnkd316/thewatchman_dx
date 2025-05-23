@@ -5,7 +5,7 @@ from pytest_homeassistant_custom_component.common import MockConfigEntry
 from homeassistant.helpers import entity_registry as er
 from . import from_list
 
-from custom_components.watchman.const import (
+from custom_components.watchman_dx.const import (
     CONF_CHECK_LOVELACE,
     CONF_CHUNK_SIZE,
     CONF_COLUMNS_WIDTH,
@@ -49,14 +49,14 @@ async def test_entry_migration_1to2(
     hass: HomeAssistant,
     entity_registry: er.EntityRegistry,
 ):
-    """Test watchman initialization."""
+    """Test watchman_dx initialization."""
     # await async_init_integration(hass)
 
     mock_config_entry = MockConfigEntry(
         domain=DOMAIN,
         title="WM",
         unique_id="unique_id",
-        entry_id="watchman_entry",
+        entry_id="watchman_dx_entry",
         version=1,
         minor_version=1,
         options=old_config,
@@ -65,8 +65,8 @@ async def test_entry_migration_1to2(
     entity_registry.async_get_or_create(
         "sensor",
         DOMAIN,
-        "watchman_entry_watchman_missing_services",
-        suggested_object_id="watchman_missing_services",
+        "watchman_dx_entry_watchman_dx_missing_services",
+        suggested_object_id="watchman_dx_missing_services",
         config_entry=mock_config_entry,
     )
     assert entity_registry.async_get(f"sensor.{SENSOR_MISSING_SERVICES}")
@@ -75,7 +75,7 @@ async def test_entry_migration_1to2(
     await hass.config_entries.async_setup(mock_config_entry.entry_id)
     await hass.async_block_till_done()
 
-    assert "watchman_data" in hass.data
+    assert "watchman_dx_data" in hass.data
     assert hass.services.has_service(DOMAIN, "report")
 
     assert mock_config_entry.data[CONF_INCLUDED_FOLDERS] == from_list(

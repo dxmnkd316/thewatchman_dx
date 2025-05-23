@@ -21,8 +21,8 @@ from homeassistant.components.homeassistant import (
     SERVICE_RELOAD_ALL,
 )
 
-from .services import WatchmanServicesSetup
-from .coordinator import WatchmanCoordinator
+from .services import WatchmandxServicesSetup
+from .coordinator import WatchmandxCoordinator
 from .utils.logger import _LOGGER
 from .utils.utils import (
     get_entry,
@@ -67,9 +67,9 @@ type WMConfigEntry = ConfigEntry[WMData]
 
 @dataclass
 class WMData:
-    """Watchman runtime data."""
+    """Watchman_dx runtime data."""
 
-    coordinator: WatchmanCoordinator
+    coordinator: WatchmandxCoordinator
     force_parsing: bool
     parse_reason: str | None
 
@@ -80,7 +80,7 @@ async def async_setup_entry(hass: HomeAssistant, config_entry: WMConfigEntry):
         f"::async_setup_entry:: Integration setup in progress. Home assistant path: {hass.config.path("")}"
     )
 
-    coordinator = WatchmanCoordinator(hass, _LOGGER, name=config_entry.title)
+    coordinator = WatchmandxCoordinator(hass, _LOGGER, name=config_entry.title)
     # parsing shouldn't occur if HA is not running yet
     config_entry.runtime_data = WMData(
         coordinator, force_parsing=False, parse_reason=None
@@ -92,7 +92,7 @@ async def async_setup_entry(hass: HomeAssistant, config_entry: WMConfigEntry):
     await hass.config_entries.async_forward_entry_setups(config_entry, PLATFORMS)
 
     config_entry.async_on_unload(config_entry.add_update_listener(update_listener))
-    WatchmanServicesSetup(hass, config_entry)
+    WatchmandxServicesSetup(hass, config_entry)
     await add_event_handlers(hass)
 
     await coordinator.async_config_entry_first_refresh()
@@ -102,7 +102,7 @@ async def async_setup_entry(hass: HomeAssistant, config_entry: WMConfigEntry):
     if not hass.is_running:
         # home assistant is not yet loaded
         # parse_config will be scheduled once HA is fully loaded
-        _LOGGER.info("Watchman started [%s]", VERSION)
+        _LOGGER.info("Watchman_dx started [%s]", VERSION)
     return True
 
 
@@ -130,9 +130,9 @@ async def async_unload_entry(hass: HomeAssistant, config_entry):  # pylint: disa
         hass.data.pop(DOMAIN)
 
     if unload_ok:
-        _LOGGER.info("Watchman integration successfully unloaded.")
+        _LOGGER.info("Watchman_dx integration successfully unloaded.")
     else:
-        _LOGGER.error("Having trouble unloading watchman integration")
+        _LOGGER.error("Having trouble unloading watchman_dx integration")
 
     return unload_ok
 
@@ -234,7 +234,7 @@ async def async_migrate_entry(hass, config_entry: ConfigEntry):
     if config_entry.version > 1:
         # This means the user has downgraded from a future version
         _LOGGER.error(
-            "Unable to migratre Watchman entry from version %d.%d. If integration version was downgraded, use backup to restore its data.",
+            "Unable to migratre Watchman_dx entry from version %d.%d. If integration version was downgraded, use backup to restore its data.",
             config_entry.version,
             config_entry.minor_version,
         )
@@ -242,7 +242,7 @@ async def async_migrate_entry(hass, config_entry: ConfigEntry):
     else:
         # migrate from ConfigEntry.options to ConfigEntry.data
         _LOGGER.info(
-            "Start Watchman configuration entry migration to version 2. Source data: %s",
+            "Start Watchman_dx configuration entry migration to version 2. Source data: %s",
             config_entry.options,
         )
         data = DEFAULT_OPTIONS
@@ -291,7 +291,7 @@ async def async_migrate_entry(hass, config_entry: ConfigEntry):
             data[CONF_STARTUP_DELAY] = config_entry.options[CONF_STARTUP_DELAY]
 
         _LOGGER.info(
-            "Successfully migrated Watchman configuration entry from version %d.%d. to version %d.%d",
+            "Successfully migrated Watchman_dx configuration entry from version %d.%d. to version %d.%d",
             config_entry.version,
             config_entry.minor_version,
             CONFIG_ENTRY_VERSION,

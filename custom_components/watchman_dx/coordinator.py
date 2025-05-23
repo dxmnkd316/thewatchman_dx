@@ -33,11 +33,11 @@ from .utils.logger import _LOGGER
 parser_lock = asyncio.Lock()
 
 
-class WatchmanCoordinator(DataUpdateCoordinator):
+class WatchmandxCoordinator(DataUpdateCoordinator):
     """My custom coordinator."""
 
     def __init__(self, hass, logger, name):
-        """Initialize watchmman coordinator."""
+        """Initialize watchmman_dx coordinator."""
         super().__init__(
             hass,
             _LOGGER,
@@ -60,14 +60,14 @@ class WatchmanCoordinator(DataUpdateCoordinator):
         if self.hass.is_running:
             # integration reloaded or options changed via UI
             _LOGGER.debug(f"{INDENT} hass up and running, try to parse config")
-            await parse_config(self.hass, reason="changes in watchman configuration")
+            await parse_config(self.hass, reason="changes in watchman_dx configuration")
         else:
             _LOGGER.debug(f"{INDENT} hass is still loading, do nothing yet")
             # first run, home assistant still loading
             # parse_config will be scheduled once HA is fully loaded
 
     async def _async_update_data(self) -> dict[str, Any]:
-        """Update Watchman sensors.
+        """Update Watchman_dx sensors.
 
         Update will trigger parsing of configuration files if entry.runtime_data.force_parsing is set
         """
@@ -137,7 +137,7 @@ class WatchmanCoordinator(DataUpdateCoordinator):
                         COORD_DATA_ENTITY_ATTRS: entity_attrs,
                     }
                     _LOGGER.debug(
-                        f"::coordinator:: Watchman sensors updated, actions: {self.data[COORD_DATA_MISSING_SERVICES]}, entities: {self.data[COORD_DATA_MISSING_ENTITIES]}"
+                        f"::coordinator:: Watchman_dx sensors updated, actions: {self.data[COORD_DATA_MISSING_SERVICES]}, entities: {self.data[COORD_DATA_MISSING_ENTITIES]}"
                     )
 
                     return self.data

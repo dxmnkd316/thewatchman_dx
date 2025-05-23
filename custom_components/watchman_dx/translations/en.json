@@ -1,7 +1,7 @@
 {
     "config": {
         "abort": {
-            "single_instance_allowed": "Only one instance of watchman is allowed"
+            "single_instance_allowed": "Only one instance of watchman_dx is allowed"
         },
         "step": {}
     },
@@ -15,17 +15,17 @@
         },
         "step": {
             "init": {
-                "title": "Watchman settings",
+                "title": "Watchman_dx settings",
                 "data": {
                     "included_folders": "Folders to watch:",
                     "ignored_items": "Ignored entities and actions:",
                     "ignored_states": "Exclude entities with the states below from the report:",
                     "ignored_files": "Ignored files (comma-separated):",
                     "check_lovelace": "Parse UI controlled dashboards",
-                    "startup_delay": "Startup delay for watchman sensors initialization"
+                    "startup_delay": "Startup delay for watchman_dx sensors initialization"
                 },
                 "data_description": {
-                    "included_folders": "Comma-separated list of folders where watchman should look for config files",
+                    "included_folders": "Comma-separated list of folders where watchman_dx should look for config files",
                     "ignored_items": "Comma-separated list of entities and actions excluded from tracking",
                     "ignored_states": "Comma-separated list of the states excluded from tracking",
                     "ignored_files": "Comma-separated list of config files excluded from tracking"
@@ -41,14 +41,14 @@
                         }
                     }
                 },
-                "description": "[Help on settings](https://github.com/dummylabs/thewatchman#configuration)"
+                "description": "[Help on settings](https://github.com/dxmnkd316/thewatchman_dx#configuration)"
             }
         }
     },
     "services": {
         "report": {
             "name": "Report",
-            "description": "Run the Watchman report",
+            "description": "Run the Watchman_dx report",
             "fields": {
                 "create_file": {
                     "name": "Create file report",
@@ -64,7 +64,7 @@
                 },
                 "parse_config": {
                     "name": "Force configuration parsing",
-                    "description": "Parse configuration files before generating the report. Usually, this is done automatically by Watchman, so this flag is typically not required."
+                    "description": "Parse configuration files before generating the report. Usually, this is done automatically by Watchman_dx, so this flag is typically not required."
                 },
                 "chunk_size": {
                     "name": "Notification message chunk size",

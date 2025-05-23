@@ -2,18 +2,18 @@
 
 from homeassistant.const import Platform
 
-DOMAIN = "watchman"
-DOMAIN_DATA = "watchman_data"
-VERSION = "0.7.0-beta.0"
+DOMAIN = "watchman_dx"
+DOMAIN_DATA = "watchman_dx_data"
+VERSION = "0.8.0-beta.0"
 
 CONFIG_ENTRY_VERSION = 2
 CONFIG_ENTRY_MINOR_VERSION = 1
 
-DEFAULT_REPORT_FILENAME = "watchman_report.txt"
-DEFAULT_HEADER = "-== WATCHMAN REPORT ==- "
+DEFAULT_REPORT_FILENAME = "watchman_dx_report.txt"
+DEFAULT_HEADER = "-== WATCHMAN_dx REPORT ==- "
 DEFAULT_CHUNK_SIZE = 3500
 
-PACKAGE_NAME = "custom_components.watchman"
+PACKAGE_NAME = "custom_components.watchman_dx"
 REPORT_SERVICE_NAME = "report"
 
 HASS_DATA_PARSED_ENTITY_LIST = "entity_list"
@@ -71,10 +71,10 @@ CONF_SECTION_NOTIFY_ACTION = "notify_action_options"
 EVENT_AUTOMATION_RELOADED = "automation_reloaded"
 EVENT_SCENE_RELOADED = "scene_reloaded"
 
-SENSOR_LAST_UPDATE = "watchman_last_updated"
-SENSOR_MISSING_ENTITIES = "watchman_missing_entities"
-SENSOR_MISSING_SERVICES = "watchman_missing_services"
-SENSOR_MISSING_ACTIONS = "watchman_missing_actions"
+SENSOR_LAST_UPDATE = "watchman_dx_last_updated"
+SENSOR_MISSING_ENTITIES = "watchman_dx_missing_entities"
+SENSOR_MISSING_SERVICES = "watchman_dx_missing_services"
+SENSOR_MISSING_ACTIONS = "watchman_dx_missing_actions"
 MONITORED_STATES = ["unavailable", "unknown", "missing", "disabled"]
 
 TRACKED_EVENT_DOMAINS = [
@@ -112,7 +112,7 @@ DEFAULT_OPTIONS = {
     CONF_CHECK_LOVELACE: False,
     CONF_STARTUP_DELAY: 0,
     CONF_SECTION_APPEARANCE_LOCATION: {
-        CONF_HEADER: "-== Watchman Report ==-",
+        CONF_HEADER: "-== Watchman_dx Report ==-",
         CONF_REPORT_PATH: "",
         CONF_COLUMNS_WIDTH: "30, 8, 60",
         CONF_FRIENDLY_NAMES: False,
@@ -142,5 +142,5 @@ DEFAULT_HA_DOMAINS = [
     "schedule",
 ]
 
-# Watchman will ignore lines started from these words followed by :
+# Watchman_dx will ignore lines started from these words followed by :
 PARSER_STOP_WORDS = ["description", "example", "icon", "title"]

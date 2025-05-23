@@ -143,7 +143,7 @@ class ConfigFlowHandler(ConfigFlow, domain=DOMAIN):
     MINOR_VERSION = CONFIG_ENTRY_MINOR_VERSION
 
     async def async_step_user(self, user_input=None) -> ConfigFlowResult:
-        """Create new Watchman entry via UI."""
+        """Create new Watchman_dx entry via UI."""
         _LOGGER.debug("::async_step_user::")
         options = DEFAULT_OPTIONS
         options[CONF_SECTION_APPEARANCE_LOCATION][CONF_REPORT_PATH] = (
@@ -151,7 +151,7 @@ class ConfigFlowHandler(ConfigFlow, domain=DOMAIN):
         )
         options[CONF_INCLUDED_FOLDERS] = self.hass.config.path()
         options[CONF_IGNORED_FILES] = DEFAULT_OPTIONS[CONF_IGNORED_FILES]
-        return self.async_create_entry(title="Watchman", data=options)
+        return self.async_create_entry(title="Watchman_dx", data=options)
 
     @staticmethod
     @callback

@@ -12,7 +12,7 @@ from homeassistant.components.sensor.const import (
 from homeassistant.helpers import entity_registry as er
 from homeassistant.core import callback
 from homeassistant.const import MATCH_ALL
-from .entity import WatchmanEntity
+from .entity import WatchmandxEntity
 
 from .const import (
     COORD_DATA_ENTITY_ATTRS,
@@ -31,7 +31,7 @@ from .const import (
 async def async_setup_entry(hass, entry, async_add_devices):
     """Set up sensor platform."""
     coordinator = hass.data[DOMAIN][entry.entry_id]
-    # if sensor.watchman_missing_sensor exists in entity registry - this is an existing
+    # if sensor.watchman_dx_missing_sensor exists in entity registry - this is an existing
     # user and we don't want to break compatibility by changing sensor name to actions
     entity_registry = er.async_get(hass)
     action_sensor_name = (
@@ -69,8 +69,8 @@ async def async_setup_entry(hass, entry, async_add_devices):
     )
 
 
-class LastUpdateSensor(WatchmanEntity, SensorEntity):
-    """Timestamp sensor for last watchman update time."""
+class LastUpdateSensor(WatchmandxEntity, SensorEntity):
+    """Timestamp sensor for last watchman_dx update time."""
 
     _attr_should_poll = False
     _attr_icon = "mdi:shield-half-full"
@@ -97,8 +97,8 @@ class LastUpdateSensor(WatchmanEntity, SensorEntity):
         super()._handle_coordinator_update()
 
 
-class MissingEntitiesSensor(WatchmanEntity, SensorEntity):
-    """Number of missing entities from watchman report."""
+class MissingEntitiesSensor(WatchmandxEntity, SensorEntity):
+    """Number of missing entities from watchman_dx report."""
 
     _attr_should_poll = False
     _attr_icon = "mdi:shield-half-full"
@@ -138,8 +138,8 @@ class MissingEntitiesSensor(WatchmanEntity, SensorEntity):
         super()._handle_coordinator_update()
 
 
-class MissingServicesSensor(WatchmanEntity, SensorEntity):
-    """Number of missing services from watchman report."""
+class MissingServicesSensor(WatchmandxEntity, SensorEntity):
+    """Number of missing services from watchman_dx report."""
 
     _attr_should_poll = False
     _attr_icon = "mdi:shield-half-full"

@@ -1,4 +1,4 @@
--== Watchman Report ==-
+-== Watchman_dx Report ==-
 
 -== Congratulations, all 3 actions from your config are available!
 

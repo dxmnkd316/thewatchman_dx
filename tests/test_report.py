@@ -3,7 +3,7 @@
 import os
 from unittest.mock import patch
 
-from custom_components.watchman.const import (
+from custom_components.watchman_dx.const import (
     CONF_IGNORED_STATES,
     DOMAIN,
     CONF_IGNORED_FILES,
@@ -13,7 +13,7 @@ from custom_components.watchman.const import (
 )
 from . import async_init_integration, assert_files_equal
 
-TEST_INCLUDED_FOLDERS = ["/workspaces/thewatchman/tests/input"]
+TEST_INCLUDED_FOLDERS = ["/workspaces/thewatchman_dx/tests/input"]
 
 
 async def mock_path(yaml_file, root):
@@ -26,11 +26,11 @@ async def mock_stats(hass, start_time):
     return ("01 Jan 1970 00:00:00", 0.01, 0.105, 0.0003)
 
 
-@patch("custom_components.watchman.utils.report.parsing_stats", new=mock_stats)
-@patch("custom_components.watchman.utils.parser.async_get_short_path", new=mock_path)
+@patch("custom_components.watchman_dx.utils.report.parsing_stats", new=mock_stats)
+@patch("custom_components.watchman_dx.utils.parser.async_get_short_path", new=mock_path)
 async def test_table_default(hass, tmpdir):
     """Test table rendering."""
-    base_report = "/workspaces/thewatchman/tests/input/test_report1.txt"
+    base_report = "/workspaces/thewatchman_dx/tests/input/test_report1.txt"
     # reports stored here: /tmp/pytest-of-root/pytest-current/<test_name>_pyloop_current
     test_report = tmpdir.join("test_report1.txt")
 
@@ -55,11 +55,11 @@ async def test_table_default(hass, tmpdir):
     assert_files_equal(base_report, test_report)
 
 
-@patch("custom_components.watchman.utils.report.parsing_stats", new=mock_stats)
-@patch("custom_components.watchman.utils.parser.async_get_short_path", new=mock_path)
+@patch("custom_components.watchman_dx.utils.report.parsing_stats", new=mock_stats)
+@patch("custom_components.watchman_dx.utils.parser.async_get_short_path", new=mock_path)
 async def test_table_no_missing(hass, tmpdir):
     """Test table rendering with no missing elements."""
-    base_report = "/workspaces/thewatchman/tests/input/test_report2.txt"
+    base_report = "/workspaces/thewatchman_dx/tests/input/test_report2.txt"
     # reports stored here: /tmp/pytest-of-root/pytest-current/<test_name>_pyloop_current
     test_report = tmpdir.join("test_report2.txt")
     await async_init_integration(
@@ -83,10 +83,10 @@ async def test_table_no_missing(hass, tmpdir):
     assert_files_equal(base_report, test_report)
 
 
-@patch("custom_components.watchman.utils.report.parsing_stats", new=mock_stats)
+@patch("custom_components.watchman_dx.utils.report.parsing_stats", new=mock_stats)
 async def test_table_all_clear(hass, tmpdir):
     """Test table rendering with no entries."""
-    base_report = "/workspaces/thewatchman/tests/input/test_report3.txt"
+    base_report = "/workspaces/thewatchman_dx/tests/input/test_report3.txt"
     # reports stored here: /tmp/pytest-of-root/pytest-current/<test_name>_pyloop_current
     test_report = tmpdir.join("test_report3.txt")
     await async_init_integration(
@@ -111,11 +111,11 @@ async def test_table_all_clear(hass, tmpdir):
     assert_files_equal(base_report, test_report)
 
 
-@patch("custom_components.watchman.utils.report.parsing_stats", new=mock_stats)
-@patch("custom_components.watchman.utils.parser.async_get_short_path", new=mock_path)
+@patch("custom_components.watchman_dx.utils.report.parsing_stats", new=mock_stats)
+@patch("custom_components.watchman_dx.utils.parser.async_get_short_path", new=mock_path)
 async def test_column_resize(hass, tmpdir):
     """Test table rendering with narrow columns."""
-    base_report = "/workspaces/thewatchman/tests/input/test_report4.txt"
+    base_report = "/workspaces/thewatchman_dx/tests/input/test_report4.txt"
     # reports stored here: /tmp/pytest-of-root/pytest-current/<test_name>_pyloop_current
     test_report = tmpdir.join("test_report4.txt")
     await async_init_integration(

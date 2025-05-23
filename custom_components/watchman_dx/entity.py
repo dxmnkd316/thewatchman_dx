@@ -9,15 +9,15 @@ from homeassistant.helpers.update_coordinator import (
 from .const import DOMAIN, VERSION
 
 
-class WatchmanEntity(CoordinatorEntity):
-    """Representation of a Watchman entity."""
+class WatchmandxEntity(CoordinatorEntity):
+    """Representation of a Watchman_dx entity."""
 
     def __init__(
         self,
         coordinator: DataUpdateCoordinator,
         entity_description: EntityDescription,
     ) -> None:
-        """Initialize Watchman entity."""
+        """Initialize Watchman_dx entity."""
         super().__init__(coordinator)
         self.entity_description = entity_description
         # per sensor unique_id
@@ -25,12 +25,12 @@ class WatchmanEntity(CoordinatorEntity):
             f"{coordinator.config_entry.entry_id}_{entity_description.key}"
         )
         self._attr_device_info = DeviceInfo(
-            identifiers={(DOMAIN, "watchman_unique_id")},
+            identifiers={(DOMAIN, "watchman_dx_unique_id")},
             manufacturer="dummylabs",
-            model="Watchman",
-            name="Watchman",
+            model="Watchman_dx",
+            name="Watchman_dx",
             sw_version=VERSION,
             entry_type=DeviceEntryType.SERVICE,
-            configuration_url="https://github.com/dummylabs/thewatchman",
+            configuration_url="https://github.com/dxmnkd316/thewatchman_dx",
         )
         self._attr_extra_state_attributes = {}
