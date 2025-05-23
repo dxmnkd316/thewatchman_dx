@@ -9,29 +9,29 @@ homeassistant:
 logger:
   default: info
   logs:
-    custom_components.watchman: debug
+    custom_components.watchman_dx: debug
   filters:
-    custom_components.watchman:
+    custom_components.watchman_dx:
       - "^:U.*" # check DebugLogger class from .utils for more info on filtering
       - "^:T.*"
       - "^:M.*"
-    custom_components.watchman.coordinator:
+    custom_components.watchman_dx.coordinator:
       - "^:U.*"
       - "^:T.*"
       - "^:M.*"
-    custom_components.watchman.utils:
+    custom_components.watchman_dx.utils:
       - "^:U.*"
       #- "^:T.*"
       - "^:M.*"
-    custom_components.watchman.sensor:
+    custom_components.watchman_dx.sensor:
       - "^:U.*"
       - "^:T.*"
       - "^:M.*"
-    custom_components.watchman.entity:
+    custom_components.watchman_dx.entity:
       - "^:U.*"
       - "^:T.*"
       - "^:M.*"
-    custom_components.watchman.config_flow:
+    custom_components.watchman_dx.config_flow:
       - "^:U.*"
       - "^:T.*"
       - "^:M.*"
