@@ -113,6 +113,7 @@ class WatchmandxCoordinator(DataUpdateCoordinator):
                                 "state": state,
                                 "friendly_name": name or "",
                                 "occurrences": fill(parsed_entity_list[entity], 0),
+                                "domains": fill(parsed_entity_list[entity], 0),
                             }
                         )
 
