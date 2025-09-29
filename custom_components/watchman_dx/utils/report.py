@@ -133,13 +133,16 @@ def table_renderer(hass, entry_type):
         friendly_names = get_config(hass, CONF_FRIENDLY_NAMES, False)
         header = ["Entity ID", "State", "Location"]
         table.field_names = header
+        coordinator = hass.data[DOMAIN][HASS_DATA_COORDINATOR] #add domain info
         for entity in entities_missing:
             state, name = get_entity_state(hass, entity, friendly_names)
+            domain = coordinator._get_entity_domain(entity)  # get domain
             table.add_row(
                 [
                     fill(entity, columns_width[0], name),
                     fill(state, columns_width[1]),
                     fill(parsed_entity_list[entity], columns_width[2]),
+                    fill(domain, 3),  # add a new column for domain
                 ]
             )
 
@@ -163,8 +166,10 @@ def text_renderer(hass, entry_type):
         entities_missing = hass.data[DOMAIN][HASS_DATA_MISSING_ENTITIES]
         entity_list = hass.data[DOMAIN][HASS_DATA_PARSED_ENTITY_LIST]
         friendly_names = get_config(hass, CONF_FRIENDLY_NAMES, False)
+        coordinator = hass.data[DOMAIN][HASS_DATA_COORDINATOR] #add domain info
         for entity in entities_missing:
             state, name = get_entity_state(hass, entity, friendly_names)
+            domain = coordinator._get_entity_domain(entity) #domain info
             entity_col = entity if not name else f"{entity} ('{name}')"
             result += f"{entity_col} [{state}] in: {fill(entity_list[entity], 0)}\n"
 
@@ -188,7 +193,7 @@ def fill(data, width, extra=None):
 
 def get_columns_width(user_width):
     """Define width of the report columns."""
-    default_width = [30, 7, 60]
+    default_width = [30, 7, 60, 15]
     if not user_width:
         return default_width
     try:
