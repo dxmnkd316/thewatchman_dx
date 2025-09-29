@@ -30,6 +30,8 @@ from .utils.utils import (
 )
 from .utils.logger import _LOGGER
 
+from homeassistant.helpers import entity_registry as er # domain lookups
+
 parser_lock = asyncio.Lock()
 
 
@@ -54,6 +56,25 @@ class WatchmandxCoordinator(DataUpdateCoordinator):
             COORD_DATA_ENTITY_ATTRS: "",
         }
         self._config_entry_domain_cache: dict[str, str] = {} #add caching for domain info
+
+    def _get_entity_domain(self, entity_id: str) -> str:
+        """Return the integration domain that owns an entity, e.g. 'utility_meter'."""
+        # Check cache first
+        if entity_id in self._config_entry_domain_cache:
+            return self._config_entry_domain_cache[entity_id]
+    
+        # Look it up in the entity registry
+        ent_reg = er.async_get(self.hass)
+        entry = ent_reg.async_get(entity_id)
+        if not entry or not entry.config_entry_id:
+            domain = entity_id.split(".")[0]  # fallback: just 'sensor', 'binary_sensor', etc.
+        else:
+            ce = self.hass.config_entries.async_get_entry(entry.config_entry_id)
+            domain = ce.domain if ce else entity_id.split(".")[0]
+    
+        # Cache it
+        self._config_entry_domain_cache[entity_id] = domain
+        return domain
 
     async def _async_setup(self) -> None:
         """Do initialization logic."""
@@ -108,13 +129,14 @@ class WatchmandxCoordinator(DataUpdateCoordinator):
                         state, name = get_entity_state(
                             self.hass, entity, friendly_names=True
                         )
+                        domain = self._get_entity_domain(entity)
                         entity_attrs.append(
                             {
                                 "id": entity,
                                 "state": state,
                                 "friendly_name": name or "",
                                 "occurrences": fill(parsed_entity_list[entity], 0),
-                                "domains": fill(parsed_entity_list[entity], 0),
+                                "domain": domain,
                             }
                         )
 
