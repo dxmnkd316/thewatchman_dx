@@ -53,6 +53,7 @@ class WatchmandxCoordinator(DataUpdateCoordinator):
             COORD_DATA_SERVICE_ATTRS: "",
             COORD_DATA_ENTITY_ATTRS: "",
         }
+        self._config_entry_domain_cache: dict[str, str] = {} #add caching for domain info
 
     async def _async_setup(self) -> None:
         """Do initialization logic."""
