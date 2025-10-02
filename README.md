@@ -7,7 +7,8 @@
 * This fork was created to create an option that puls  in core config entities since I have a lot of helpers that use templates.  These are not checked by any other missing entity finder as far as I'm aware (including The Watchman and Spook).
 * There isn't an easy or user-friendly way to clean up that file directly in yaml.  You'll have to edit the template sensor OR device that has the missing reference.  In my case, most of these were older disabled HomeKit Bridges that I had "archived" until testing of a new configuration was completed.  But I also found several groups, template sensors, etc. that had missing entities as I renamed them, deleted, etc.
 * The point of this is, as we move to the UI more and more, checking these files becomes increasingly important.
-* I plan on testing this for a few weeks/months and then offering a PR up for the original repo.  
+* I plan on testing this for a few weeks/months and then offering a PR up for the original repo.
+* From ThPa1980 - Exclude entities used by disabled automations | If enabled, entities referenced only by disabled automations will be excluded from the report. | UI flag
 
 
 ## ORIGINAL REPO README:
