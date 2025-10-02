@@ -29,6 +29,7 @@ from .const import (
     CONF_INCLUDED_FOLDERS,
     CONF_CHECK_LOVELACE,
     CONF_CHECK_CONFIG_ENTRIES,
+    CONF_EXCLUDE_DISABLED_AUTOMATION,
     CONF_IGNORED_STATES,
     CONF_COLUMNS_WIDTH,
     CONF_STARTUP_DELAY,
@@ -70,6 +71,9 @@ def _get_data_schema() -> vol.Schema:
             ): cv.boolean,
             vol.Optional(
                 CONF_CHECK_CONFIG_ENTRIES,
+            ): cv.boolean,
+            vol.Optional(
+                CONF_EXCLUDE_DISABLED_AUTOMATION,
             ): cv.boolean,
             vol.Required(CONF_SECTION_APPEARANCE_LOCATION): data_entry_flow.section(
                 vol.Schema(
