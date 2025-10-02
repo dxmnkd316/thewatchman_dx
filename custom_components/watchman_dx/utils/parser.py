@@ -47,6 +47,7 @@ async def parse_config(hass: HomeAssistant, reason=None):
     hass.data[DOMAIN][HASS_DATA_PARSED_SERVICE_LIST] = parsed_service_list
     hass.data[DOMAIN][HASS_DATA_FILES_PARSED] = files_parsed
     hass.data[DOMAIN][HASS_DATA_FILES_IGNORED] = files_ignored
+    hass.data[DOMAIN][HASS_DATA_ENTITY_TO_AUTOMATIONS] = entity_to_automations
     hass.data[DOMAIN][HASS_DATA_PARSE_DURATION] = time.time() - start_time
     _LOGGER.debug(
         f"{INDENT}Parsing took {hass.data[DOMAIN][HASS_DATA_PARSE_DURATION]:.2f}s."
