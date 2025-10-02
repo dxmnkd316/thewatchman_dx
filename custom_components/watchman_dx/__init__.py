@@ -258,6 +258,7 @@ async def async_migrate_entry(hass, config_entry: ConfigEntry):
         data[CONF_IGNORED_STATES] = config_entry.options.get(CONF_IGNORED_STATES, [])
         data[CONF_CHECK_LOVELACE] = config_entry.options.get(CONF_CHECK_LOVELACE, False)
         data[CONF_CHECK_CONFIG_ENTRIES] = config_entry.options.get(CONF_CHECK_CONFIG_ENTRIES, False)
+        data[CONF_EXCLUDE_DISABLED_AUTOMATION] = config_entry.options.get(CONF_EXCLUDE_DISABLED_AUTOMATION, False)
 
         if CONF_IGNORED_ITEMS in config_entry.options:
             data[CONF_IGNORED_ITEMS] = ",".join(
