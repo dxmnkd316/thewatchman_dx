@@ -243,6 +243,5 @@ def renew_missing_entities_list(hass):
 
         if state in ["missing", "unknown", "unavail", "disabled"]:
             entities_missing[entry] = occurrences
-            _LOGGER.debug(f"{INDENT}entry {entry} added to the report")
             _LOGGER.debug(f"{INDENT}entry {entry} added to the report (used by {used_by_automations})")
     return entities_missing
