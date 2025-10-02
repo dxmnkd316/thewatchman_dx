@@ -21,6 +21,7 @@
                     "ignored_items": "Ignored entities and actions:",
                     "ignored_states": "Exclude entities with the states below from the report:",
                     "ignored_files": "Ignored files (comma-separated):",
+                    "exclude_disabled_automation": "Exclude entities used only by disabled automations:",
                     "check_lovelace": "Parse UI controlled dashboards",
                     "Ccheck_config_entries": "Check core.config_entries",
                     "startup_delay": "Startup delay for watchman_dx sensors initialization"
